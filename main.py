@@ -39,10 +39,10 @@ def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
 
 
-client = WeChatClient(USER_ID, APP_SECRET)
+client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature = get_weather()
 data = {"weather":{"value":wea},"temperature":{"value":temperature},"birthday_left":{"value":get_birthday()},"words":{"value":get_words(), "color":get_random_color()}}
-res = wm.send_template(USER_ID, TEMPLATE_ID, data)
+res = wm.send_template(user_id, template_id, data)
 print(res)
